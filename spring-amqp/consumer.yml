@@ -1,0 +1,15 @@
+applications:
+- name: tut3-consumer
+  path: target/rabbit-tutorials-1.7.1.RELEASE.jar
+  disk_quota: 512M
+  memory: 1G
+  random-route: true
+  buildpack: java_buildpack
+  health-check-type: process
+  services:
+    - rabbit-mq
+  stack: cflinuxfs2
+  env:
+    CONSUMER: true
+    PRODUCER: false
+    SPRING_PROFILES_ACTIVE: pub-sub,receiver
